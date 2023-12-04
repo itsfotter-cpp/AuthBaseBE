@@ -5,7 +5,6 @@ import com.authbase.entity.JwtRequest;
 import com.authbase.entity.JwtResponse;
 import com.authbase.entity.User;
 import com.authbase.util.JwtUtil;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;

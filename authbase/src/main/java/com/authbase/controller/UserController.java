@@ -24,13 +24,13 @@ public class UserController {
     @GetMapping("/forAdmin")
     @PreAuthorize("hasRole('admin')")
     public String forAdmin() {
-        return "ADMIN";
+        return "This page is accessible only to Admin Profile";
     }
 
     @GetMapping("/forUser")
     @PreAuthorize("hasRole('user')")
     public String forUser() {
-        return "USER";
+        return "This page is accessible only to User Profile";
     }
 
 }

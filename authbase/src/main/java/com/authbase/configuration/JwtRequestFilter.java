@@ -3,7 +3,6 @@ package com.authbase.configuration;
 import com.authbase.service.JwtService;
 import com.authbase.util.JwtUtil;
 import io.jsonwebtoken.ExpiredJwtException;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,14 +25,13 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Autowired
     private JwtService jwtService;
 
-    String userName = null;
-
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
         final String header = request.getHeader("Authorization");
         String jwtToken = null;
-        if(header != null && header.startsWith("Bearer")) {
+        String userName = null;
+        if(header != null && header.startsWith("Bearer ")) {
             jwtToken = header.substring(7);
             try {
                 userName = jwtUtil.getUserNameFromToken(jwtToken);
