@@ -1,11 +1,15 @@
-package com.authbase.entity;
+package com.authbase.dto.response;
 
+import com.authbase.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
 public class JwtResponse {
-    private User user;
+
+    private UserResponse user;
+
     private String jwtToken;
+
 }

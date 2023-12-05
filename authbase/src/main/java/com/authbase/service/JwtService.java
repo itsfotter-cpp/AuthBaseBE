@@ -1,9 +1,10 @@
 package com.authbase.service;
 
 import com.authbase.dao.UserDao;
-import com.authbase.entity.JwtRequest;
-import com.authbase.entity.JwtResponse;
+import com.authbase.dto.request.JwtRequest;
+import com.authbase.dto.response.JwtResponse;
 import com.authbase.entity.User;
+import com.authbase.mapper.UserMapper;
 import com.authbase.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,11 +24,13 @@ import java.util.Set;
 public class JwtService implements UserDetailsService {
 
     @Autowired
-    private UserDao userDao;
-    @Autowired
     private JwtUtil jwtUtil;
     @Autowired
     private AuthenticationManager authenticationManager;
+    @Autowired
+    private UserDao userDao;
+    @Autowired
+    private UserMapper userMapper;
 
     public JwtResponse createJwtToken(JwtRequest jwtRequest) throws Exception {
         String userName = jwtRequest.getUserName();
@@ -36,14 +39,14 @@ public class JwtService implements UserDetailsService {
 
         final UserDetails userDetails = loadUserByUsername(userName);
         String newGeneratedToken = jwtUtil.generateToken(userDetails);
-        User user = userDao.findById(userName).get();
+        User user = userDao.findByUserName(userName).get();
 
-        return new JwtResponse(user, newGeneratedToken);
+        return new JwtResponse(userMapper.toDtoResponseFromUser(user), newGeneratedToken);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userDao.findById(username).get();
+        User user = userDao.findByUserName(username).get();
         if(user != null) {
             return new org.springframework.security.core.userdetails.User(
                     user.getUserName(),
