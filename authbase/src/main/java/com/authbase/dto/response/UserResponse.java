@@ -9,6 +9,8 @@ public class UserResponse {
 
     private String uuid;
 
+    private String email;
+
     private String userName;
 
     private Set<RoleResponse> role;

@@ -3,6 +3,8 @@ package com.authbase.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 import java.util.UUID;
 
@@ -15,6 +17,9 @@ public class User {
     private Long idUser;
 
     private UUID uuid;
+
+    @Column(unique = true)
+    private String email;
 
     @Column(unique = true)
     private String userName;
@@ -36,5 +41,8 @@ public class User {
             }
     )
     private Set<Role> role;
+
+    @Column(columnDefinition = "integer default 1")
+    private Integer active;
 
 }
