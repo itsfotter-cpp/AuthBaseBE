@@ -1,4 +1,4 @@
-package com.authbase.service;
+package com.authbase.service.impl;
 
 import com.authbase.dao.UserDao;
 import com.authbase.dto.request.JwtRequest;

@@ -1,6 +1,6 @@
 package com.authbase.mapper;
 
-import com.authbase.dto.response.TypeDemandResponse;
+import com.authbase.dto.TypeDemandDto;
 import com.authbase.entity.TypeDemand;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,36 +9,36 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-12-07T15:40:49+0100",
+    date = "2023-12-12T15:06:57+0100",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 11 (Oracle Corporation)"
 )
 @Component
 public class TypeDemandMapperImpl implements TypeDemandMapper {
 
     @Override
-    public List<TypeDemandResponse> toDtoList(List<TypeDemand> typeDemandList) {
+    public List<TypeDemandDto> toDtoList(List<TypeDemand> typeDemandList) {
         if ( typeDemandList == null ) {
             return null;
         }
 
-        List<TypeDemandResponse> list = new ArrayList<TypeDemandResponse>( typeDemandList.size() );
+        List<TypeDemandDto> list = new ArrayList<TypeDemandDto>( typeDemandList.size() );
         for ( TypeDemand typeDemand : typeDemandList ) {
-            list.add( typeDemandToTypeDemandResponse( typeDemand ) );
+            list.add( typeDemandToTypeDemandDto( typeDemand ) );
         }
 
         return list;
     }
 
-    protected TypeDemandResponse typeDemandToTypeDemandResponse(TypeDemand typeDemand) {
+    protected TypeDemandDto typeDemandToTypeDemandDto(TypeDemand typeDemand) {
         if ( typeDemand == null ) {
             return null;
         }
 
-        TypeDemandResponse typeDemandResponse = new TypeDemandResponse();
+        TypeDemandDto typeDemandDto = new TypeDemandDto();
 
-        typeDemandResponse.setIdType( typeDemand.getIdType() );
-        typeDemandResponse.setTypeDescription( typeDemand.getTypeDescription() );
+        typeDemandDto.setIdType( typeDemand.getIdType() );
+        typeDemandDto.setTypeDescription( typeDemand.getTypeDescription() );
 
-        return typeDemandResponse;
+        return typeDemandDto;
     }
 }

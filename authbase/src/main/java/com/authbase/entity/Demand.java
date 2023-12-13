@@ -24,6 +24,10 @@ public class Demand {
     @JoinColumn(name = "id_type", referencedColumnName = "idType")
     private TypeDemand typeDemand;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_user", referencedColumnName = "idUser")
+    private User user;
+
     private Date absenceDateStart;
 
     private Date absenceDateEnd;

@@ -1,17 +1,15 @@
-package com.authbase.dto.response;
+package com.authbase.dto;
 
 import lombok.Data;
 
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 
 @Data
-public class TypeDemandResponse {
+public class TypeDemandDto {
 
     @Id
     private Long idType;
 
-    @NotNull
     private String typeDescription;
 
 }

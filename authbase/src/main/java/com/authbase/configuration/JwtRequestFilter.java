@@ -1,6 +1,6 @@
 package com.authbase.configuration;
 
-import com.authbase.service.JwtService;
+import com.authbase.service.impl.JwtService;
 import com.authbase.util.JwtUtil;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +22,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
     @Autowired
     private JwtUtil jwtUtil;
+
     @Autowired
     private JwtService jwtService;
 

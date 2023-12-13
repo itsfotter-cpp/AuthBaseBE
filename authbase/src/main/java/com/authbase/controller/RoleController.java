@@ -1,12 +1,10 @@
 package com.authbase.controller;
 
 import com.authbase.entity.Role;
-import com.authbase.service.RoleService;
+import com.authbase.service.impl.RoleService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
@@ -16,6 +14,7 @@ public class RoleController {
     private RoleService roleService;
 
     @PostMapping("/createNewRole")
+    @ResponseStatus(HttpStatus.CREATED)
     public Role createNewRole(@RequestBody Role role) {
         return roleService.createNewRole(role);
     }
