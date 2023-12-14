@@ -38,5 +38,4 @@ public class Demand {
 
     private String note;
 
-
 }
