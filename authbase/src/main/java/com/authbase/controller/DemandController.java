@@ -30,10 +30,16 @@ public class DemandController {
         return IDemandService.insertNewDemandRequest(demandRequest);
     }
 
-    @GetMapping("/manage-demands/{userName}")
+    @GetMapping("/manage-demands-by-user/{userName}")
     @ResponseStatus(HttpStatus.OK)
-    public List<DemandResponse> manageDemands(@PathVariable("userName") String userName) {
-        return IDemandService.manageDemands(userName);
+    public List<DemandResponse> manageDemandsByUser(@PathVariable("userName") String userName) {
+        return IDemandService.manageDemandsByUsername(userName);
+    }
+
+    @GetMapping("/manage-all-demands")
+    @ResponseStatus(HttpStatus.OK)
+    public List<DemandResponse> manageAllDemands() {
+        return IDemandService.manageAllDemands();
     }
 
 }

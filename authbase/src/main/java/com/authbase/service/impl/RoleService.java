@@ -1,7 +1,9 @@
 package com.authbase.service.impl;
 
 import com.authbase.dao.RoleDao;
+import com.authbase.dto.response.RoleResponse;
 import com.authbase.entity.Role;
+import com.authbase.mapper.RoleMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +14,17 @@ import java.util.UUID;
 public class RoleService {
 
     private final RoleDao roleDao;
+    private final RoleMapper mapper;
 
-    public Role createNewRole(Role role) {
+    public RoleResponse createNewRole(Role role) {
         role.setUuid(UUID.randomUUID());
-       return roleDao.save(role);
+        Role roleEntity = roleDao.save(role);
+        return mapper.toResponseDto(roleEntity);
+    }
+
+    public Long getRoleId(String roleName) {
+        Role role = roleDao.findByRoleName(roleName);
+        return role.getIdRole();
     }
 
 }

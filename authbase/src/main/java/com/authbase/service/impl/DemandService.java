@@ -40,6 +40,7 @@ public class DemandService implements IDemandService {
 
     @Override
     public boolean insertNewDemandRequest(DemandRequest demandRequest) {
+
         Demand demand = demandMapper.fromDtoRequest(demandRequest);
         demand.setDateDemand(new Date());
 
@@ -59,10 +60,12 @@ public class DemandService implements IDemandService {
         demandDao.save(demand);
 
         return true;
+
     }
 
     @Override
-    public List<DemandResponse> manageDemands(String userName) {
+    public List<DemandResponse> manageDemandsByUsername(String userName) {
+
         User user = userDao.findByUserName(userName).orElseThrow(
                 () -> new ResourceNotFoundException("User not found")
         );
@@ -70,5 +73,15 @@ public class DemandService implements IDemandService {
         List<Demand> demandList = demandDao.findByUser(user);
 
         return demandMapper.toDtoResponseList(demandList);
+
+    }
+
+    @Override
+    public List<DemandResponse> manageAllDemands() {
+
+        List<Demand> demandList = demandDao.findAll();
+
+        return demandMapper.toDtoResponseList(demandList);
+
     }
 }

@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-12-12T15:06:57+0100",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 11 (Oracle Corporation)"
+    date = "2023-12-21T12:31:29+0100",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 11.0.2 (Oracle Corporation)"
 )
 @Component
 public class DemandMapperImpl implements DemandMapper {

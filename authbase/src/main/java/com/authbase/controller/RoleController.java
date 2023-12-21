@@ -1,5 +1,6 @@
 package com.authbase.controller;
 
+import com.authbase.dto.response.RoleResponse;
 import com.authbase.entity.Role;
 import com.authbase.service.impl.RoleService;
 import lombok.AllArgsConstructor;
@@ -15,8 +16,14 @@ public class RoleController {
 
     @PostMapping("/createNewRole")
     @ResponseStatus(HttpStatus.CREATED)
-    public Role createNewRole(@RequestBody Role role) {
+    public RoleResponse createNewRole(@RequestBody Role role) {
         return roleService.createNewRole(role);
+    }
+
+    @GetMapping("/role-by-name")
+    @ResponseStatus(HttpStatus.OK)
+    public Long getRoleByName(@RequestParam("roleName") String roleName) {
+        return roleService.getRoleId(roleName);
     }
 
 }
