@@ -13,6 +13,10 @@ public class UserResponse {
 
     private String userName;
 
+    private String userFirstName;
+
+    private String userLastName;
+
     private Set<RoleResponse> role;
 
 }

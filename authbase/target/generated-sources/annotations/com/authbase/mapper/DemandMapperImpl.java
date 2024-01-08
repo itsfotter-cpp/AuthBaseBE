@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-12-21T12:31:29+0100",
+    date = "2024-01-05T15:03:27+0100",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 11.0.2 (Oracle Corporation)"
 )
 @Component
@@ -55,6 +55,8 @@ public class DemandMapperImpl implements DemandMapper {
         demandResponse.setAbsenceTimeStart( demand.getAbsenceTimeStart() );
         demandResponse.setAbsenceTimeEnd( demand.getAbsenceTimeEnd() );
         demandResponse.setNote( demand.getNote() );
+
+        setUserDemand( demandResponse, demand );
 
         return demandResponse;
     }

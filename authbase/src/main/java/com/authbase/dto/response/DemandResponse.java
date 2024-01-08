@@ -14,6 +14,8 @@ public class DemandResponse {
 
     private String typeDemand;
 
+    private String user;
+
     private Date absenceDateStart;
 
     private Date absenceDateEnd;
